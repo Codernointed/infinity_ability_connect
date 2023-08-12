@@ -171,7 +171,7 @@ class _SignToTextScreenState extends State<SignToTextScreen> {
                           Align(
                             alignment: AlignmentDirectional(0, 0.81),
                             child: Container(
-                              width: double.infinity,
+                              width: 388,
                               height: 239,
                               decoration: BoxDecoration(
                                 color: Color.fromARGB(255, 249, 207, 88),

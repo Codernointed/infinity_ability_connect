@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'articledetailscreen.dart';
+import 'package:infinty_ability_connect/articledetailscreen.dart';
 
 class EmergencyArticlesScreen extends StatelessWidget {
   final _textController = TextEditingController();
@@ -309,6 +309,33 @@ class EmergencyArticlesScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+// class ArticleDetailScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Article Detail'),
+//       ),
+//       body: Center(
+//         child: Text('Article details will be displayed here.'),
+//       ),
+//     );
+//   }
+// }
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Emergency Articles',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: EmergencyArticlesScreen(),
     );
   }
 }

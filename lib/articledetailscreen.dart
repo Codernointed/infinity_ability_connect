@@ -11,7 +11,7 @@ class ArticleDetailScreen extends StatelessWidget {
           backgroundColor: Colors.grey[100],
           automaticallyImplyLeading: false,
           leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_rounded,
               color: Colors.black,
               size: 30,
@@ -47,7 +47,7 @@ class ArticleDetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     'Emergency Preparedness for Individuals with Physical Disabilities',
@@ -63,17 +63,17 @@ class ArticleDetailScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
                         child: Container(
                           height: 32,
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 249, 207, 88),
+                            color: Colors.amber,
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
-                              color: Color.fromARGB(255, 249, 207, 88),
+                              color: Colors.amber,
                             ),
                           ),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.center,
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 8),
@@ -91,7 +91,7 @@ class ArticleDetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
                     'Introduction',
@@ -101,7 +101,7 @@ class ArticleDetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     'Emergencies and disasters can strike at any time, and it\'s crucial for individuals with physical disabilities to be adequately prepared to handle such situations. Here are some essential tips to help individuals with physical disabilities react and prepare for various emergencies:\n',
@@ -110,7 +110,7 @@ class ArticleDetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     'Create a Personalized Emergency Plan',
@@ -120,7 +120,7 @@ class ArticleDetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     'Develop a comprehensive emergency plan tailored to your specific needs and capabilities. Identify escape routes from your home and workplace, and ensure they are accessible and well-lit. Share your plan with family, friends, and neighbors, so they can assist you in case of an emergency.',
@@ -129,7 +129,7 @@ class ArticleDetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
               ],
             ),
           ),

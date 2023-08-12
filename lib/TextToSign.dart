@@ -15,10 +15,18 @@ class _TextToSignScreenState extends State<TextToSignScreen> {
     super.dispose();
   }
 
-  void _loadLetterGif(String letter) {
-    setState(() {
-      _currentLetter = letter;
-    });
+  void _loadLetterGif(String text) {
+    String letters = text.toLowerCase();
+
+    if (letters.isNotEmpty) {
+      for (int i = 0; i < letters.length; i++) {
+        Future.delayed(Duration(seconds: i), () {
+          setState(() {
+            _currentLetter = letters[i];
+          });
+        });
+      }
+    }
   }
 
   @override
@@ -104,7 +112,7 @@ class _TextToSignScreenState extends State<TextToSignScreen> {
                     padding: EdgeInsets.fromLTRB(8, 25, 8, 0),
                     child: TextFormField(
                       controller: _textController,
-                      autofocus: true,
+                      autofocus: false,
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: '    enter text here...',
@@ -152,7 +160,7 @@ class _TextToSignScreenState extends State<TextToSignScreen> {
                       padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                       child: ElevatedButton(
                         onPressed: () {
-                          print('Button pressed ...');
+                          print('Record button pressed ...');
                         },
                         child: Text(
                           'Record Voice',
@@ -232,7 +240,6 @@ class _TextToSignScreenState extends State<TextToSignScreen> {
                       ),
                     ),
                   ),
-                  // Add some extra padding at the bottom to avoid overflow
                   SizedBox(height: 20),
                 ],
               ),
@@ -242,4 +249,10 @@ class _TextToSignScreenState extends State<TextToSignScreen> {
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: TextToSignScreen(),
+  ));
 }

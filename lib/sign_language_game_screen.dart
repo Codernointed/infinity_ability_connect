@@ -9,7 +9,7 @@ class SignLanguageGameScreen extends StatefulWidget {
 class _SignLanguageGameScreenState extends State<SignLanguageGameScreen> {
   int currentQuestionIndex = 0;
   int score = 0;
-  double progress = 0.0;
+  double progress = 0.0; // Added variable for progress
   bool? isAnswerCorrect;
 
   final List<Map<String, dynamic>> questions = [
@@ -205,13 +205,14 @@ class _SignLanguageGameScreenState extends State<SignLanguageGameScreen> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 2),
                             child: LinearPercentIndicator(
-                              percent: progress,
+                              percent:
+                                  progress, // Use the progress variable here
                               lineHeight: 25,
                               animation: true,
                               progressColor: Color.fromARGB(255, 249, 207, 88),
                               backgroundColor: Colors.grey[300],
                               center: Text(
-                                '${(_calculateProgress() * 100).toInt()}%',
+                                '${(progress * 100).toInt()}%',
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -285,6 +286,7 @@ class _SignLanguageGameScreenState extends State<SignLanguageGameScreen> {
 
     setState(() {
       this.isAnswerCorrect = isAnswerCorrect;
+      // Calculate progress and update the progress variable
       progress = (score + (isAnswerCorrect ? 1 : 0)) / questions.length;
     });
 
@@ -305,11 +307,5 @@ class _SignLanguageGameScreenState extends State<SignLanguageGameScreen> {
         }
       });
     });
-  }
-
-  double _calculateProgress() {
-    int totalQuestions = questions.length;
-    int totalCorrectAnswers = score;
-    return totalCorrectAnswers / totalQuestions;
   }
 }

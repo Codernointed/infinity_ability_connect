@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color.fromARGB(255, 207, 158, 11), // Gold
         scaffoldBackgroundColor: Colors.white, // Dominant White
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
           textTheme: ButtonTextTheme.primary,
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          
+          backgroundColor: Colors.amber, // Gold
           selectedItemColor: Color.fromARGB(255, 249, 207, 88), // Gold
           unselectedItemColor: Colors.black, // Black
         ),
@@ -60,11 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
-  setState(() {
-    _currentIndex = index.clamp(0, _screens.length - 1);
-  });
-},
-
+          setState(() {
+            _currentIndex = index;
+          });
+        },
         items: [
           const BottomNavigationBarItem(
             icon: Icon(Icons.translate),
@@ -87,4 +85,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

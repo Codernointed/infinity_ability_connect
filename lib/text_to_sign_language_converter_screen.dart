@@ -8,7 +8,7 @@ class TextToSignLanguageConverterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of (context).requestFocus(FocusNode()),
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         body: Align(
