@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class TextToSignScreen extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class TextToSignScreen extends StatefulWidget {
 class _TextToSignScreenState extends State<TextToSignScreen> {
   final TextEditingController _textController = TextEditingController();
   String _currentLetter = 'a';
+  final stt.SpeechToText _speech = stt.SpeechToText();
+  bool _isListening = false;
 
   @override
   void dispose() {
@@ -26,6 +29,32 @@ class _TextToSignScreenState extends State<TextToSignScreen> {
           });
         });
       }
+    }
+  }
+
+  Future<void> _listen() async {
+    if (!_isListening) {
+      bool available = await _speech.initialize(
+        onStatus: (status) {
+          if (status == stt.SpeechToText.listeningStatus) {
+            setState(() => _isListening = true);
+          } else if (status == stt.SpeechToText.notListeningStatus) {
+            setState(() => _isListening = false);
+          }
+        },
+      );
+
+      if (available) {
+        _speech.listen(
+          onResult: (result) {
+            setState(() {
+              _textController.text = result.recognizedWords;
+            });
+          },
+        );
+      }
+    } else {
+      _speech.stop();
     }
   }
 
@@ -159,11 +188,9 @@ class _TextToSignScreenState extends State<TextToSignScreen> {
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                       child: ElevatedButton(
-                        onPressed: () {
-                          print('Record button pressed ...');
-                        },
+                        onPressed: _listen,
                         child: Text(
-                          'Record Voice',
+                          _isListening ? 'Stop Listening' : 'Record Voice',
                           style: TextStyle(
                             fontFamily: 'Readex Pro',
                             fontSize: 20,
@@ -227,9 +254,9 @@ class _TextToSignScreenState extends State<TextToSignScreen> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-0.01, -0.30),
+                            alignment: Alignment.center,
                             child: Text(
-                              'Convert to Sign Language',
+                              'Press button to\nConvert to Sign Language',
                               style: TextStyle(
                                 fontFamily: 'Readex Pro',
                                 fontSize: 20,
